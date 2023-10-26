@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Management System</h1>
+    <h3>Register Customer</h3>
+    <div id="date"></div> 
+    <br>
+    <form action="/dist/index.html" method="GET" id="registerForm">
+        <input type="text" placeholder="Business Name" id="name" required>
+        <input type="text" placeholder="Address" id="address" required>
+        <input type="text" min="0" max="10" placeholder="number" id="number" required>
+        <button type="submit" id="submit">Add</button>
+    </form>
+
+    <div id="logs">
+        <h3>All Customers</h3>
+        <hr>
+
+    </div>
+    <script type="module" src="main.js"></script> 
+</body>
+</html>
