@@ -3,75 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Js LocalStorage</title>
-    <style>
-        #pageWrap{
-            max-width: 700px;
-            width: 100%;
-            margin:0 auto;
-            text-align: center;
-        }
-        #form{
-            width: 80%;
-            margin: 0 auto 2rem;
-        }
-        #renderCustomers{
-            border-top: 1px solid #1e1e1e;
-        }
-        input[type=text], select {
-            padding: .5rem .6rem;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button[type=submit] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        table {
-            min-width: 700px;
-            margin: 0 auto;
-        }
-        /* Dark Style */
-        table {
-            color: #ddd;
-            background: #333;
-            font-size: 12pt;
-            border-collapse: collapse;
-        }
-        table thead th,
-        table tfoot th {
-            color: #aaa;
-            background: rgba(0255,255,255,.15);
-        }
-        table caption {
-            padding:.5em;
-        }
-        table th,
-        table td {
-            padding: .5em;
-            border: 1px solid grey;
-        }
-</style>
 </head>
 <body>
+    <div id="topBar">
+        <div class="logo">
+            <h1>M S <span>Management System</span> </h1>
+        </div>
+        <nav>
+            <ul>
+                <li>Dashboard</li>
+                <li><strong>Register Customers</strong></li>
+                <li>Log out</li>
+            </ul>
+        </nav>
+    </div>
     <main id="pageWrap">
-        <h1>Management System</h1>
-        <h3>Register Customer</h3>
-        <br>
-
+        <h2>Register Customer</h2>
+        
         <div id="form">
             <form action="/dist/index.html" method="GET" id="registerForm">
                 <input type="text" placeholder="Business Name" id="name" required>
@@ -84,12 +34,12 @@
 
         <div id="renderCustomers">
             <table id="customerTable">
-                <caption>All Customers</caption>
+                <caption></caption>
                 <tr>
-                    <th>Vertrags Nummer</th>
-                    <th>Inhaber</th>
-                    <th>Adresse</th>
-                    <th>Telefon</th>
+                    <th>Contract ID</th>
+                    <th>Customer</th>
+                    <th>Address</th>
+                    <th>Phone</th>
                     <th>Delete</th>
                 </tr>
             </table>

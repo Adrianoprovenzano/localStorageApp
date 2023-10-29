@@ -10,9 +10,12 @@ class UserCreator{
 
     userRegistered(id, name) {
         const notificationDisplay = document.querySelector('#notificationDisplay');
+        notificationDisplay.style.opacity= '1';
+        notificationDisplay.classList.add('notificationDisplay');
         notificationDisplay.innerHTML= `User with id: ${id} and name: ${name}, was successfully registered`;
 
-        setTimeout(() => { notificationDisplay.innerHTML= '';}, 2000)
+        setTimeout(() => { notificationDisplay.style.opacity= '0';}, 4000)
+        setTimeout(() => { notificationDisplay.classList.remove('notificationDisplay');  notificationDisplay.innerHTML= '';}, 5000)
     }
 }
 
@@ -31,7 +34,7 @@ function addUsersToPage(arr){
                     <td> ${obj.name}</td>
                     <td>${obj.address}</td>
                     <td>${obj.number}</td>
-                    <td><button data-delete="d" id="${obj.id}" >Delete</button></td>
+                    <td><button data-delete="delete" id="${obj.id}" >Delete</button></td>
                 </tr>
                 `;
     } else {
@@ -44,17 +47,21 @@ function addUsersToPage(arr){
                     <td> ${obj.name}</td>
                     <td>${obj.address}</td>
                     <td>${obj.number}</td>
-                    <td><button data-delete="d" id="${obj.id}" >Delete</button></td>
+                    <td><button class="btn" data-delete="delete" id="${obj.id}" >Delete</button></td>
                 </tr>
                 `;
          }
     }
+    captionText();
 }
 
 function deleteUser(element){
-    let id = element.getAttribute('id');
-    localStorage.removeItem('User_'+ id);
-    element.parentElement.parentElement.remove();
+    if (confirm("Are you sure you want to delete this customer?")) {
+        let id = element.getAttribute('id');
+        localStorage.removeItem('User_'+ id);
+        element.parentElement.parentElement.remove();
+        captionText();
+    } else {''}
 }
 
 function addToLocalStorage(user){
@@ -68,6 +75,14 @@ function addToLocalStorage(user){
     console.log('localstore finished')
 }
 
+function captionText(){
+    const tr = document.querySelectorAll('tr');
+    const caption = document.querySelector('#customerTable caption');
+    let g = tr.length;
+    if(g === 1 ) {caption.innerHTML = "No Customers Registred";}
+    else{caption.innerHTML = "All Customers";}
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //             Event Handling
@@ -76,6 +91,7 @@ function addToLocalStorage(user){
 window.addEventListener('load', () => {
     const allItemsInStorage = { ...localStorage };
     addUsersToPage(allItemsInStorage);
+    captionText();
 })
 
 
@@ -100,3 +116,12 @@ registerForm.addEventListener('submit', (e) => {
     user.userRegistered(user.id, user.name);
 })
 
+// Delete button click
+const parenTr =  document.querySelector('#customerTable');
+parenTr.addEventListener('click', function(e){
+    let deleteButton = e.target;
+    let attr = e.target.getAttribute('data-delete');
+    if (attr === 'delete') {
+          deleteUser(deleteButton);
+        }
+})
