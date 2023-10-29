@@ -10,7 +10,7 @@ body, html {
 }
 
 #pageWrap{
-    max-width: 700px;
+    max-width: 1000px;
     width: 100%;
     margin:5rem auto;
     text-align: center;
@@ -21,7 +21,7 @@ body, html {
     padding:1rem 5rem;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(rgb(0, 0, 161), rgb(68, 1, 68));
@@ -64,7 +64,7 @@ body, html {
 }
 
 #form{
-    width: 80%;
+    width: 100%;
     margin: 0 auto 2rem;
 }
 #renderCustomers{
@@ -79,11 +79,11 @@ input[type=text], select {
     box-sizing: border-box;
 }
 button[type=submit] {
-    width: 100%;
+    width: 80%;
     background: rgba(68, 1, 68, .8);
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px auto;
     border: none;
     border-radius: 4px;
     cursor: pointer;
